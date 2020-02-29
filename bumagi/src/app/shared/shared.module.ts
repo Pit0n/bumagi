@@ -4,7 +4,8 @@ import { InputTextComponent } from "./controls/input-text/input-text.component";
 import { ButtonComponent } from "./controls/button/button.component";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PasswordComponent } from './controls/password/password.component';
-import { TabsComponent } from './tabs/tabs.component';
+import { TabsComponent } from './components/tabs/tabs.component';
+import { UserListItemComponent } from './components/user-list-item/user-list-item.component';
 
 const components = [
   InputTextComponent,
@@ -13,8 +14,8 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [...components, TabsComponent],
-  exports: [...components, TabsComponent],
+  declarations: [...components, TabsComponent, UserListItemComponent],
+  exports: [...components, TabsComponent, UserListItemComponent],
   imports: [
     CommonModule,
     FormsModule,

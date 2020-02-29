@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
-import { TabsModel } from "../models/tabs.model";
+import { TabsModel } from "../../models/tabs.model";
 
 @Component({
   selector: 'app-tabs',
