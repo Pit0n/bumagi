@@ -1,0 +1,53 @@
+@import "fonts";
+
+:host {
+  display: flex;
+  width: 100%;
+  padding: 0 48px;
+  background: #FFFFFF;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.07);
+}
+
+.tabs {
+  position: relative;
+  padding: 16px 12px 13px;
+  font-family: $sanFranciscoTextRegular;
+  font-size: 13px;
+  line-height: 18px;
+  font-style: normal;
+  font-weight: 500;
+  color: #D0C9D6;
+
+  &:hover {
+    color: #1A051D;
+    cursor: pointer;
+
+    & .select {
+      display: block;
+    }
+  }
+
+  &.active {
+    color: #1A051D;
+
+    & .select {
+      display: block;
+    }
+  }
+}
+
+.tabs + .tabs {
+  margin-left: 24px;
+}
+
+.select {
+  display: none;
+  position: absolute;
+  content: '';
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 3px;
+  background: #6979F8;
+  border-radius: 200px 200px 0 0;
+}

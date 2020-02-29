@@ -1,0 +1,4 @@
+<div *ngFor="let tab of tabs; let i = index; trackBy: trackByFn" class="tabs" [ngClass]="{active: tab.active}" (click)="select(i)">
+  <div class="tab">{{tab.label}}</div>
+  <div class="select"></div>
+</div>
