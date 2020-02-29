@@ -1,0 +1,22 @@
+@import 'mixins';
+
+$sanFranciscoTextRegular: 'SFUIText-Regular', sans-serif;
+$sanFranciscoTextSB: 'SFUIText-Semibold', sans-serif;
+$sanFranciscoTextMedium: 'SFUIText-Medium', sans-serif;
+$sanFranciscoDisplaySB: 'SFProDisplay-Semibold', sans-serif;
+
+@font-face {
+  @include font('SFUIText-Regular');
+}
+
+@font-face {
+  @include font('SFUIText-Semibold');
+}
+
+@font-face {
+  @include font('SFUIText-Medium');
+}
+
+@font-face {
+  @include font('SFProDisplay-Semibold');
+}

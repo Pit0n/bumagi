@@ -1,0 +1,8 @@
+<div class="large">
+<button
+  (click)="clickButton.emit()"
+  [type]="isSubmitType ? 'submit' : 'button'"
+  [disabled]="disabled">
+  <span class="text-btn">{{ label }}</span>
+</button>
+</div>

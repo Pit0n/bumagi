@@ -1,0 +1,19 @@
+/** микс для добавление иконки */
+@mixin icon-prepend($icon) {
+  background: url('/assets/icons/#{$icon}.svg') no-repeat;
+  background-size: contain;
+}
+
+/** микс для шрифтов */
+@mixin font($font-name) {
+  @font-face {
+    font-family: $font-name;
+    src: url('/assets/fonts/SanFrancisco/#{$font-name}.eot');
+    src: url('/assets/fonts/SanFrancisco/#{$font-name}.eot?#iefix') format('embedded-opentype'),
+    url('/assets/fonts/SanFrancisco/#{$font-name}.woff') format('woff'),
+    url('/assets/fonts/SanFrancisco/#{$font-name}.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+
