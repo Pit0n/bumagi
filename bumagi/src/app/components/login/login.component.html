@@ -1,0 +1,5 @@
+<form [formGroup]="form" class="wrapper" (ngSubmit)="submitForm()">
+  <app-input-text [parentFormGroup]="form" controlName="login" placeholder="Логин"></app-input-text>
+  <app-password [parentFormGroup]="form" controlName="password" placeholder="Пароль"></app-password>
+  <app-button class="large" label="Войти" [isSubmitType]="true"></app-button>
+</form>
