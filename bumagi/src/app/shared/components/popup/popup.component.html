@@ -1,0 +1,14 @@
+<div class="background-popup">
+  <div class="popup">
+
+    <div class="header-popup">
+      <div class="title-popup">{{ title }}</div>
+      <div class="img-close" (click)="closePopup()"></div>
+    </div>
+
+    <div class="body-popup">
+      <ng-content></ng-content>
+    </div>
+
+  </div>
+</div>

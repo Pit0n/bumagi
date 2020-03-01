@@ -2,7 +2,7 @@
 <div class="content">
   <ng-container *ngIf="userList$ | async as userList; else load">
     <div *ngFor="let user of userList; trackBy: trackByFn">
-      <app-user-list-item [user]="user"></app-user-list-item>
+      <app-user-list-item [user]="user" (click)="editUser(user)"></app-user-list-item>
     </div>
   </ng-container>
 </div>
@@ -10,3 +10,7 @@
 <ng-template #load>
   <app-loader></app-loader>
 </ng-template>
+
+<app-popup *ngIf="showPopup" (close)="closePopup()" [title]="editedUser.fname + ' ' + editedUser.name">
+  <app-user-edit (closeForm)="closePopup()" [editedUser]="editedUser"></app-user-edit>
+</app-popup>

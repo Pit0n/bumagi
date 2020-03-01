@@ -1,0 +1,61 @@
+@import 'mixins';
+@import 'fonts';
+
+:host {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  z-index: 99;
+}
+
+.background-popup {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(63, 51, 86, 0.4);
+}
+
+.popup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 916px;
+  background-color: #fff;
+  box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+  border-radius: 12px;
+
+  .img-close {
+    position: absolute;
+    top: 30px;
+    right: 30px;
+    width: 21px;
+    height: 21px;
+    @include icon-prepend("close");
+    cursor: pointer;
+  }
+}
+
+.header-popup {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 80px;
+  border-bottom: 1px solid #ECEBED;
+
+  .title-popup {
+    padding-left: 34px;
+    font-family: $sanFranciscoDisplaySB;
+    font-size: 34px;
+    line-height: 41px;
+    font-style: normal;
+    font-weight: bold;
+    color: #000000;
+  }
+}
+

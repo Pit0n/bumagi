@@ -1,0 +1,12 @@
+<form [formGroup]="form" class="wrapper" (ngSubmit)="submitForm()">
+  <div class="content">
+    <app-input-text class="control" [parentFormGroup]="form" controlName="fname" placeholder="Фамилия"></app-input-text>
+    <app-input-text class="control" [parentFormGroup]="form" controlName="name" placeholder="Имя"></app-input-text>
+    <app-input-text class="control" [parentFormGroup]="form" controlName="mname" placeholder="Отчество"></app-input-text>
+  </div>
+  <div class="footer-form">
+    <div class="button-wrapper">
+      <app-button class="small" isSubmitType="true" label="Сохранить"></app-button>
+    </div>
+  </div>
+</form>
