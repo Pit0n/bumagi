@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
+import { first } from "rxjs/operators";
+import { ApiService } from "../../shared/api/api.service";
 
 @Component({
   selector: 'app-login',
@@ -9,7 +11,7 @@ import { FormBuilder, FormGroup } from "@angular/forms";
 export class LoginComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private api: ApiService) {
   }
 
   ngOnInit() {
@@ -18,6 +20,7 @@ export class LoginComponent implements OnInit {
 
   public submitForm(): void {
     console.log(this.form.getRawValue());
+    this.api.auth().pipe(first()).subscribe(res => console.log(res));
   }
 
   private initForm(): void {

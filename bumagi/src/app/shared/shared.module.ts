@@ -6,6 +6,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { PasswordComponent } from './controls/password/password.component';
 import { TabsComponent } from './components/tabs/tabs.component';
 import { UserListItemComponent } from './components/user-list-item/user-list-item.component';
+import { ShortFullNamePipe } from './pipes/short-full-name.pipe';
+import { CommaToDotPipe } from './pipes/comma-to-dot.pipe';
 
 const components = [
   InputTextComponent,
@@ -14,7 +16,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [...components, TabsComponent, UserListItemComponent],
+  declarations: [...components, TabsComponent, UserListItemComponent, ShortFullNamePipe, CommaToDotPipe],
   exports: [...components, TabsComponent, UserListItemComponent],
   imports: [
     CommonModule,

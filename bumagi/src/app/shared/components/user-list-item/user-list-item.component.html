@@ -1,8 +1,8 @@
 <div class="wrapper" *ngIf="user">
   <div class="avatar"></div>
-  <div class="name">{{user.name}}</div>
-  <div class="balance">{{user.balance}}</div>
+  <div class="name">{{user | shortFullName}}</div>
+  <div class="balance">Баланс: {{user.balance  | number: '.2-2': 'ru' | commaToDot}}</div>
   <div class="empty"></div>
-  <div class="date">{{user.date}}</div>
-  <div class="status">{{user.status}}</div>
+  <div class="date">Последнее изменение: {{user.date}} секунд назад</div>
+  <div class="status">{{status[user.status]}}</div>
 </div>

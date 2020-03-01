@@ -1,4 +1,5 @@
-@import "fonts";
+@import 'fonts';
+@import 'mixins';
 
 .wrapper {
   display: grid;
@@ -23,6 +24,7 @@
   height: 48px;
   border-radius: 50%;
   background-color: gray;
+  @include img-prepend('avatar');
 }
 
 .name {

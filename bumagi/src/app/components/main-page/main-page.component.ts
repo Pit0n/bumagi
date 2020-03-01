@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { TabsModel } from "../../shared/models/tabs.model";
 import { Tab } from "../../shared/consts/tabs.const";
+import { UserModel } from "../../shared/models/user.model";
+import { UserMock } from "../../shared/mocks/user.mock";
 
 @Component({
   selector: 'app-main-page',
@@ -10,14 +12,7 @@ import { Tab } from "../../shared/consts/tabs.const";
 export class MainPageComponent {
   public tabs: TabsModel[] = Tab;
 
-  user = {
-    name: 'Иванов П. Ф.',
-    fname: 'Иванов',
-    mname: 'Иванович',
-    balance: 'Баланс: 1 234.5',
-    date: 'Последнее изменение: 10 секунд назад',
-    status:  'Подписка активна'
-  };
+  users: UserModel[] = UserMock;
 
   public selectTab(idx: number): void {
     this.tabs = this.tabs.map((item, index) => ({...item, active: index === idx}));

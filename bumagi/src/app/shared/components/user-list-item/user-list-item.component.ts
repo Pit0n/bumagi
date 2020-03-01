@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import { Status } from "../../consts/status.const";
 
 @Component({
   selector: 'app-user-list-item',
@@ -8,4 +9,5 @@ import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 })
 export class UserListItemComponent  {
   @Input() user;
+  public status = Status;
 }

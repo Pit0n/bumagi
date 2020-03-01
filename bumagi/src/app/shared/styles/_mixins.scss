@@ -17,3 +17,8 @@
   }
 }
 
+/** микс для добавление изображения */
+@mixin img-prepend($img) {
+  background: url('/assets/images/#{$img}.png') no-repeat;
+  background-size: contain;
+}
