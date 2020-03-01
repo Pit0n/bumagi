@@ -32,4 +32,9 @@ export class UserService {
       .subscribe(res => this.userList$.next(res));
   }
 
+  public changeUser(id: number, user: Partial<UserModel>): void {
+    this.api.changeUser(id, user)
+      .pipe(first())
+      .subscribe();
+  }
 }

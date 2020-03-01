@@ -15,12 +15,17 @@ import { UserEditComponent } from './components/user-edit/user-edit.component';
 const components = [
   InputTextComponent,
   ButtonComponent,
-  PasswordComponent
+  PasswordComponent,
+  TabsComponent,
+  UserListItemComponent,
+  LoaderComponent,
+  PopupComponent,
+  UserEditComponent
 ];
 
 @NgModule({
-  declarations: [...components, TabsComponent, UserListItemComponent, ShortFullNamePipe, CommaToDotPipe, LoaderComponent, PopupComponent, UserEditComponent],
-  exports: [...components, TabsComponent, UserListItemComponent, LoaderComponent, PopupComponent, UserEditComponent],
+  declarations: [...components, ShortFullNamePipe, CommaToDotPipe],
+  exports: [...components],
   imports: [
     CommonModule,
     FormsModule,

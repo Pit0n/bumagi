@@ -19,8 +19,13 @@ export class LoginComponent implements OnInit {
   }
 
   public submitForm(): void {
-    console.log(this.form.getRawValue());
-    this.api.auth().pipe(first()).subscribe(res => console.log(res));
+    const user = this.form.getRawValue();
+
+    this.api.auth(user).pipe(first())
+      .subscribe(
+        res => console.log(res),
+        err => console.log(err)
+      );
   }
 
   private initForm(): void {

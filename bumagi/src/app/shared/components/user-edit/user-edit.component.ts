@@ -1,6 +1,7 @@
 import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { UserModel } from "../../models/user.model";
+import { UserService } from "../../services/user.service";
 
 @Component({
   selector: 'app-user-edit',
@@ -14,7 +15,7 @@ export class UserEditComponent implements OnInit {
 
   public form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder) {
+  constructor(private formBuilder: FormBuilder, private userService: UserService) {
   }
 
   ngOnInit() {
@@ -23,7 +24,9 @@ export class UserEditComponent implements OnInit {
   }
 
   public submitForm(): void {
-    console.log(this.form.getRawValue());
+    const user = this.form.getRawValue();
+
+    this.userService.changeUser(this.editedUser.id, user);
     this.closeForm.emit();
   }
 
