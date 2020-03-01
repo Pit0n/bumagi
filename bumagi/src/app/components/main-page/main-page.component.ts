@@ -2,7 +2,8 @@ import { Component } from '@angular/core';
 import { TabsModel } from "../../shared/models/tabs.model";
 import { Tab } from "../../shared/consts/tabs.const";
 import { UserModel } from "../../shared/models/user.model";
-import { UserMock } from "../../shared/mocks/user.mock";
+import { Observable } from "rxjs";
+import { UserService } from "../../shared/services/user.service";
 
 @Component({
   selector: 'app-main-page',
@@ -11,10 +12,20 @@ import { UserMock } from "../../shared/mocks/user.mock";
 })
 export class MainPageComponent {
   public tabs: TabsModel[] = Tab;
+  public userList$: Observable<UserModel[]> = this.userService.userList$;
 
-  users: UserModel[] = UserMock;
+  constructor(private userService: UserService) {
+    userService.getUserList();
+  }
+
+  public trackByFn = (index: number): number => index;
 
   public selectTab(idx: number): void {
     this.tabs = this.tabs.map((item, index) => ({...item, active: index === idx}));
+    this.updateUserList(idx);
+  }
+
+  private updateUserList(idx: number): void {
+    this.userService.getUserListByStatus(this.tabs[idx].status);
   }
 }

@@ -1,6 +1,6 @@
 <app-tabs [tabs]="tabs" (selectTab)="selectTab($event)"></app-tabs>
 <div class="content">
-  <div *ngFor="let user of users">
+  <div *ngFor="let user of userList$ | async; trackBy: trackByFn">
     <app-user-list-item [user]="user"></app-user-list-item>
   </div>
 </div>

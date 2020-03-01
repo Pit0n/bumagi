@@ -1,4 +1,5 @@
 export interface TabsModel {
   label: string,
-  active: boolean
+  active: boolean,
+  status: number
 }

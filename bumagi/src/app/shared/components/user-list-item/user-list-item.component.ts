@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Status } from "../../consts/status.const";
+import { UserModel } from "../../models/user.model";
 
 @Component({
   selector: 'app-user-list-item',
@@ -8,6 +9,6 @@ import { Status } from "../../consts/status.const";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class UserListItemComponent  {
-  @Input() user;
+  @Input() user: UserModel;
   public status = Status;
 }
