@@ -8,7 +8,7 @@ import { UserModel } from "../models/user.model";
   providedIn: 'root'
 })
 export class UserService {
-  public userList$ = new BehaviorSubject<UserModel[]>([]);
+  public userList$ = new BehaviorSubject<UserModel[]>(null);
 
   constructor(private api: ApiService) {
   }
@@ -19,12 +19,14 @@ export class UserService {
       return;
     }
 
+    this.userList$.next(null);
     this.api.getUserListByStatus(status)
       .pipe(first())
       .subscribe(res => this.userList$.next(res));
   }
 
   public getUserList(): void {
+    this.userList$.next(null);
     this.api.getUserList()
       .pipe(first())
       .subscribe(res => this.userList$.next(res));

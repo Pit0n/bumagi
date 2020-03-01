@@ -8,6 +8,7 @@ import { TabsComponent } from './components/tabs/tabs.component';
 import { UserListItemComponent } from './components/user-list-item/user-list-item.component';
 import { ShortFullNamePipe } from './pipes/short-full-name.pipe';
 import { CommaToDotPipe } from './pipes/comma-to-dot.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
 
 const components = [
   InputTextComponent,
@@ -16,8 +17,8 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [...components, TabsComponent, UserListItemComponent, ShortFullNamePipe, CommaToDotPipe],
-  exports: [...components, TabsComponent, UserListItemComponent],
+  declarations: [...components, TabsComponent, UserListItemComponent, ShortFullNamePipe, CommaToDotPipe, LoaderComponent],
+    exports: [...components, TabsComponent, UserListItemComponent, LoaderComponent],
   imports: [
     CommonModule,
     FormsModule,

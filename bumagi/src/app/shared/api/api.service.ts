@@ -5,6 +5,7 @@ import { Urls } from "./urls.const";
 import { Auth } from "../consts/auth.const";
 import { UserMock } from "../mocks/user.mock";
 import { UserModel } from "../models/user.model";
+import { delay } from "rxjs/operators";
 
 @Injectable({
   providedIn: 'root'
@@ -26,14 +27,14 @@ export class ApiService {
   public getUserList(): Observable<UserModel[]> {
     const url = Urls.users;
 
-    return of(UserMock);
+    // return this.http.get<UserModel[]>(url);
+    return of(UserMock).pipe(delay(2000));
   }
 
   public getUserListByStatus(status: number): Observable<UserModel[]> {
-    const url = Urls.users;
-    const params = new HttpParams()
-      .set('status', String(status));
+    const url = Urls.users + `?status=${status}`;
 
-    return of(UserMock.filter(u => u.status === status));
+    // return this.http.get<UserModel[]>(url);
+    return of(UserMock.filter(u => u.status === status)).pipe(delay(2000));
   }
 }

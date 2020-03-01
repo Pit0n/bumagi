@@ -1,0 +1,57 @@
+@import 'color';
+
+:host {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+
+.loader {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #6979F8;
+  transform-origin: 50% 50%;
+  animation: loader 1s ease-in-out infinite;
+
+  &::before {
+    position: absolute;
+    content: '';
+    top: 4px;
+    height: 16px;
+    width: 16px;
+    left: -72px;
+    border-radius: 50%;
+    background: #6979F8;
+    opacity: 0.6;
+  }
+
+  &::after {
+    position: absolute;
+    content: '';
+    top: 4px;
+    left: 80px;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: #6979F8;
+    opacity: 0.6;
+  }
+}
+
+@keyframes loader{
+  0%{transform:rotate(0deg);}
+  50%{transform:rotate(180deg);}
+  100%{transform:rotate(180deg);}
+}
