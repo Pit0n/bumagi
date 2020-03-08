@@ -1,5 +1,7 @@
 <div class="wrapper" *ngIf="user">
-  <div class="avatar"></div>
+  <div class="avatar">
+<!--    <img [src]="baseUrl + user.avatar">-->
+  </div>
   <div class="name">{{user | shortFullName}}</div>
   <div class="balance between">
     <div>Баланс:</div>
