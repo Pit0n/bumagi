@@ -13,14 +13,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  public getUserList(): Observable<UserModel[]> {
-    const url = Urls.users;
-
-    return this.http.get<UserModel[]>(url);
-  }
-
-  public getUserListByStatus(status: number): Observable<UserModel[]> {
-    const url = `${Urls.users}?status=${status}`;
+  public getUserList(status: number = -1): Observable<UserModel[]> {
+    const url =  status < 0 ? Urls.users : `${Urls.users}?status=${status}`;
 
     return this.http.get<UserModel[]>(url);
   }

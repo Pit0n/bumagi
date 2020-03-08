@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
 import { TabsModel } from "../../shared/models/tabs.model";
 import { Tab } from "../../shared/consts/tabs.const";
 import { UserModel } from "../../shared/models/user.model";
@@ -11,7 +11,7 @@ import { UserService } from "../../shared/services/user.service";
   styleUrls: ['./main-page.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class MainPageComponent {
+export class MainPageComponent implements OnDestroy {
   public tabs: TabsModel[] = Tab;
   public userList$: Observable<UserModel[]> = this.userService.userList$;
   public showPopup: boolean = false;
@@ -19,6 +19,10 @@ export class MainPageComponent {
 
   constructor(private userService: UserService) {
     userService.getUserList();
+  }
+
+  ngOnDestroy(): void {
+    this.userService.stopRequest();
   }
 
   public trackByFn = (index: number): number => index;
@@ -39,6 +43,7 @@ export class MainPageComponent {
   }
 
   private updateUserList(idx: number): void {
-    this.userService.getUserListByStatus(this.tabs[idx].status);
+    this.userService.stopRequest();
+    this.userService.getUserList(this.tabs[idx].status);
   }
 }
