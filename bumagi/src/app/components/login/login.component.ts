@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { first } from "rxjs/operators";
-import { ApiService } from "../../shared/api/api.service";
+import { Router } from "@angular/router";
+import { AuthenticationService } from "../../shared/api/authentication.service";
 
 @Component({
   selector: 'app-login',
@@ -11,7 +12,11 @@ import { ApiService } from "../../shared/api/api.service";
 export class LoginComponent implements OnInit {
   public form: FormGroup = new FormGroup({});
 
-  constructor(private formBuilder: FormBuilder, private api: ApiService) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
   }
 
   ngOnInit() {
@@ -21,11 +26,9 @@ export class LoginComponent implements OnInit {
   public submitForm(): void {
     const user = this.form.getRawValue();
 
-    this.api.auth(user).pipe(first())
-      .subscribe(
-        res => console.log(res),
-        err => console.log(err)
-      );
+    this.authenticationService.login(user)
+      .pipe(first())
+      .subscribe(_ => this.router.navigate(['/']));
   }
 
   private initForm(): void {
