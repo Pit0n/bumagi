@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from "rxjs";
-import { first, tap } from "rxjs/operators";
+import { BehaviorSubject, interval, Observable } from "rxjs";
+import { filter, first, mergeMap, tap } from "rxjs/operators";
 import { ApiService } from "../api/api.service";
 import { UserModel } from "../models/user.model";
 
@@ -9,6 +9,8 @@ import { UserModel } from "../models/user.model";
 })
 export class UserService {
   public userList$ = new BehaviorSubject<UserModel[]>(null);
+
+  private usersSortList: { [key: number]: number } = null;
 
   constructor(private api: ApiService) {
   }
@@ -27,9 +29,13 @@ export class UserService {
 
   public getUserList(): void {
     this.userList$.next(null);
-    this.api.getUserList()
-      .pipe(first())
-      .subscribe(res => this.userList$.next(res));
+    // this.api.getUserList()
+    this.recurringRequest()
+      .pipe(
+        filter(users => !!users.length),
+        tap(this.setUsersSortList)
+      )
+      .subscribe(res => this.userList$.next(this.sortUsers(res)));
   }
 
   public changeUser(id: number, user: Partial<UserModel>): void {
@@ -37,4 +43,30 @@ export class UserService {
       .pipe(first())
       .subscribe();
   }
+
+  private setUsersSortList = (users: UserModel[]): void => {
+    if (this.usersSortList) {
+      return;
+    }
+
+    let usersSortList = {};
+    users.forEach((user, idx) => usersSortList[user.id] = idx);
+    this.usersSortList = {...usersSortList};
+  };
+
+  // TODO: { message: "An error has occurred" }
+
+  private sortUsers = (users: UserModel[]): UserModel[] => {
+    const list = users.reduce((prev, cur) => {
+      prev[this.usersSortList[cur.id]] = cur;
+      return prev;
+    }, []);
+
+    return list;
+  }
+
+  private recurringRequest = (): Observable<UserModel[]> => interval(5000).pipe(mergeMap(this.userList));
+
+  private userList = (): Observable<UserModel[]> => this.api.getUserList().pipe(first());
+
 }
