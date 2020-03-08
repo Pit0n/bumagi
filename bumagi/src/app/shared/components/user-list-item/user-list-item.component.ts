@@ -8,7 +8,8 @@ import { UserModel } from "../../models/user.model";
   styleUrls: ['./user-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserListItemComponent  {
+export class UserListItemComponent {
   @Input() user: UserModel;
   public status = Status;
+  public itemPluralMapping = {'one': 'секунду', 'few': 'секунды', 'other': 'секунд'};
 }

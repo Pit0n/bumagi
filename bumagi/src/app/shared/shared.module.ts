@@ -11,6 +11,7 @@ import { CommaToDotPipe } from './pipes/comma-to-dot.pipe';
 import { LoaderComponent } from './components/loader/loader.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
+import { LastUpdateInSecondsPipe } from './pipes/last-update-in-seconds.pipe';
 
 const components = [
   InputTextComponent,
@@ -24,7 +25,7 @@ const components = [
 ];
 
 @NgModule({
-  declarations: [...components, ShortFullNamePipe, CommaToDotPipe],
+  declarations: [...components, ShortFullNamePipe, CommaToDotPipe, LastUpdateInSecondsPipe],
   exports: [...components],
   imports: [
     CommonModule,
