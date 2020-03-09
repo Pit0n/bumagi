@@ -1,9 +1,10 @@
 <div class="control" [formGroup]="parentFormGroup">
-  <input class="none" [formControlName]="controlName">
   <input class="label-option"
          [(ngModel)]="inputValue"
          [ngModelOptions]="{standalone: true}"
          (click)="isOpen = !isOpen"
+         (focusin)="isOpen = true"
+         (focusout)="isOpen = false"
          readonly>
   <div class="icon"></div>
 

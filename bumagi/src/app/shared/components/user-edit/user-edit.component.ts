@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output
 import { FormBuilder, FormGroup } from "@angular/forms";
 import { UserModel } from "../../models/user.model";
 import { UserService } from "../../services/user.service";
+import { StatusSelector } from "../../consts/status.const";
 
 @Component({
   selector: 'app-user-edit',
@@ -14,6 +15,7 @@ export class UserEditComponent implements OnInit {
   @Output() closeForm = new EventEmitter();
 
   public form: FormGroup = new FormGroup({});
+  public options = StatusSelector;
 
   constructor(private formBuilder: FormBuilder, private userService: UserService) {
   }
@@ -34,13 +36,15 @@ export class UserEditComponent implements OnInit {
     this.form = this.formBuilder.group({
       name: [''],
       fname: [''],
-      mname: ['']
+      mname: [''],
+      status: [],
     });
   }
 
-  private setFormValue({name, fname, mname}: UserModel, {controls}: FormGroup): void {
+  private setFormValue({name, fname, mname, status}: UserModel, {controls}: FormGroup): void {
     controls.name.setValue(name);
     controls.fname.setValue(fname);
     controls.mname.setValue(mname);
+    controls.status.setValue(status);
   }
 }

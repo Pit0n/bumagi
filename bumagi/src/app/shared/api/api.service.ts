@@ -20,7 +20,7 @@ export class ApiService {
   }
 
   public changeUser(id: number, user: Partial<UserModel>): Observable<any> {
-    const url = `${Urls.users}:${id}`;
+    const url = `${Urls.users}/:${id}`;
 
     return this.http.patch<any>(url, user);
   }
