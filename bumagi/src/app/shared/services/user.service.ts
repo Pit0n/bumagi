@@ -56,7 +56,7 @@ export class UserService {
       return;
     }
 
-    this.alert.openAlert('Сервер не овечает');
+    this.alert.openAlert('Сервер не отвечает');
   };
 
   private recurringRequest = requestFn =>

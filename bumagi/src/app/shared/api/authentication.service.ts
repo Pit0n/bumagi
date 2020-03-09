@@ -5,6 +5,11 @@ import { HttpClient } from "@angular/common/http";
 import { Urls } from "./urls.const";
 import { AuthModel } from "../models/auth.model";
 
+export const testUser: AuthModel = {
+  login: 'test@example.com',
+  password: '1q2w3e'
+};
+
 @Injectable({
   providedIn: 'root'
 })
@@ -20,7 +25,7 @@ export class AuthenticationService {
   public login(user: AuthModel): Observable<any> {
     const url = Urls.auth;
 
-    return this.http.post<any>(url, user, {observe: 'response'})
+    return this.http.post<any>(url, testUser, {observe: 'response'})
       .pipe(
         tap(resp => {
           const token = resp.headers.get("Authorization");
