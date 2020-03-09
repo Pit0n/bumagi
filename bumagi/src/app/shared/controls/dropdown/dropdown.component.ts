@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 import { BaseControl } from "../control-base";
+import { SelectorModel } from "../../models/selector.model";
 
 @Component({
   selector: 'app-dropdown',
@@ -8,7 +9,7 @@ import { BaseControl } from "../control-base";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DropdownComponent extends BaseControl implements OnInit {
-  @Input() options: { id: number, label: string }[];
+  @Input() options: SelectorModel[];
   public isOpen = false;
   public inputValue = '';
 
@@ -19,16 +20,16 @@ export class DropdownComponent extends BaseControl implements OnInit {
   }
 
   /** Выбор значения из списка */
-  public selectOption(value: any): void {
-    this.setControlValue(value);
+  public selectOption(value: SelectorModel): void {
+    this.setControlValue(value.id);
     this.inputValue = value.label;
     this.isOpen = !this.isOpen;
   }
 
   /** Установить значение контрола */
-  private setControlValue(value: any): void {
+  private setControlValue(value: number): void {
     const control = this.parentFormGroup.controls[this.controlName];
-    control.setValue(value.id);
+    control.setValue(value);
     control.markAsDirty();
   }
 
