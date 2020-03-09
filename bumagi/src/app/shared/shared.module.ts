@@ -13,6 +13,7 @@ import { PopupComponent } from './components/popup/popup.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { LastUpdateInSecondsPipe } from './pipes/last-update-in-seconds.pipe';
 import { DropdownComponent } from './controls/dropdown/dropdown.component';
+import { MatSnackBarModule } from "@angular/material/snack-bar";
 
 const components = [
   InputTextComponent,
@@ -36,6 +37,7 @@ const components = [
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
+    MatSnackBarModule
   ]
 })
 export class SharedModule {

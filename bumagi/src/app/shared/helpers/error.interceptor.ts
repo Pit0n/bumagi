@@ -3,12 +3,13 @@ import { Observable } from "rxjs";
 import { catchError } from "rxjs/operators";
 import { HttpEvent, HttpHandler, HttpRequest } from "@angular/common/http";
 import { AuthenticationService } from "../api/authentication.service";
+import { AlertService } from "../services/alert.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorInterceptor {
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private authenticationService: AuthenticationService, private alert: AlertService) {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -18,7 +19,7 @@ export class ErrorInterceptor {
       }
 
       const error = err.error.message || err.statusText;
-      console.log(error);
+      this.alert.openAlert(error);
       return next.handle(request);
     }))
   }

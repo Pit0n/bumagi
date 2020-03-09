@@ -12,6 +12,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { JwtInterceptor } from "./shared/helpers/jwt.interceptor";
 import { ErrorInterceptor } from "./shared/helpers/error.interceptor";
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 registerLocaleData(localeRu, 'ru', );
 
@@ -26,7 +27,8 @@ registerLocaleData(localeRu, 'ru', );
     ReactiveFormsModule,
     HttpClientModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    NoopAnimationsModule
   ],
   providers: [
     {provide: LOCALE_ID, useValue: 'ru'},

@@ -3,6 +3,7 @@ import { BehaviorSubject, Subscription, timer } from "rxjs";
 import { filter, first, mergeMap, tap } from "rxjs/operators";
 import { ApiService } from "../api/api.service";
 import { UserModel } from "../models/user.model";
+import { AlertService } from "./alert.service";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class UserService {
   private usersSortList: { [key: number]: number } = null;
   private subscribe$ = new Subscription();
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private alert: AlertService) {
   }
 
   public getUserList(status?: number): void {
@@ -55,7 +56,7 @@ export class UserService {
       return;
     }
 
-    console.log('Сервер не овечает');
+    this.alert.openAlert('Сервер не овечает');
   };
 
   private recurringRequest = requestFn =>

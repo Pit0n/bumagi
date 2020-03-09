@@ -1,5 +1,15 @@
+@import '~@angular/material/theming';
+
+@include mat-core();
+$bumagi-primary: mat-palette($mat-indigo);
+$bumagi-accent: mat-palette($mat-pink, A200, A100, A400);
+$bumagi-warn: mat-palette($mat-red);
+$bumagi-theme: mat-light-theme($bumagi-primary, $bumagi-accent, $bumagi-warn);
+@include angular-material-theme($bumagi-theme);
+
 @import 'fonts';
 @import 'color';
+@import 'mixins';
 
 :root {
   box-sizing: border-box;
@@ -29,4 +39,33 @@ body {
 input:-webkit-autofill {
   -webkit-animation-name: autofill;
   -webkit-animation-fill-mode: both;
+}
+
+
+.custom-error.mat-snack-bar-container {
+  position: relative;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-width: 240px;
+  margin: 20px;
+  padding: 22px 14px 22px 68px;
+  background: #ffffff;
+  box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+  border-radius: 8px;
+  font-size: 15px;
+  line-height: 20px;
+  font-style: normal;
+  font-weight: normal;
+  color: #1A051D;
+
+  &::before {
+    position: absolute;
+    content: '';
+    align-self: center;
+    left: 10px;
+    width: 48px;
+    height: 48px;
+    @include icon-prepend('error');
+  }
 }
