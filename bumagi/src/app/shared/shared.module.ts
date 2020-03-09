@@ -12,6 +12,7 @@ import { LoaderComponent } from './components/loader/loader.component';
 import { PopupComponent } from './components/popup/popup.component';
 import { UserEditComponent } from './components/user-edit/user-edit.component';
 import { LastUpdateInSecondsPipe } from './pipes/last-update-in-seconds.pipe';
+import { DropdownComponent } from './controls/dropdown/dropdown.component';
 
 const components = [
   InputTextComponent,
@@ -21,11 +22,15 @@ const components = [
   UserListItemComponent,
   LoaderComponent,
   PopupComponent,
-  UserEditComponent
+  UserEditComponent,
+  ShortFullNamePipe,
+  CommaToDotPipe,
+  LastUpdateInSecondsPipe,
+  DropdownComponent
 ];
 
 @NgModule({
-  declarations: [...components, ShortFullNamePipe, CommaToDotPipe, LastUpdateInSecondsPipe],
+  declarations: [...components],
   exports: [...components],
   imports: [
     CommonModule,

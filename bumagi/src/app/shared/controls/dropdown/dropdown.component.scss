@@ -1,0 +1,48 @@
+@import 'mixins';
+
+
+.label-option {
+  cursor: pointer;
+}
+
+.icon {
+  position: absolute;
+  content: '';
+  right: 16px;
+  align-self: center;
+  height: 7px;
+  width: 10px;
+  cursor: pointer;
+  @include icon-prepend("dropdown");
+}
+
+.list-option {
+  position: absolute;
+  top: 56px;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 7px 64px rgba(0, 0, 0, 0.07);
+  border-radius: 6px;
+  overflow-y: auto;
+  z-index: 10;
+
+  .item-option {
+    display: flex;
+    padding: 16px;
+    align-items: center;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 15px;
+    line-height: 20px;
+    color: #D0C9D6;
+    cursor: pointer;
+  }
+
+  .item-option:hover {
+    color: #3F3356;
+  }
+}
+
+.none {
+  display: none;
+}

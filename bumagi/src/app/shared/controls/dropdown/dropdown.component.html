@@ -1,0 +1,20 @@
+<div class="control" [formGroup]="parentFormGroup">
+  <input class="none" [formControlName]="controlName">
+  <input class="label-option"
+         [(ngModel)]="inputValue"
+         [ngModelOptions]="{standalone: true}"
+         (click)="isOpen = !isOpen"
+         readonly>
+  <div class="icon"></div>
+
+  <ng-template [ngIf]="isOpen">
+    <div class="list-option">
+      <div class="item-option"
+           *ngFor="let item of options"
+           (click)="selectOption(item)">
+        {{ item.label }}
+      </div>
+    </div>
+  </ng-template>
+
+</div>
